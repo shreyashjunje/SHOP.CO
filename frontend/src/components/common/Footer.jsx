@@ -12,13 +12,14 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <div>
+    <div className='lg:mx-24 m-4'>
         {/* section 1 */}
-        <div>
+        <div className='flex flex-col lg:flex-row   items-center  gap-16'>
 
-            <div className='flex flex-col gap-4'>
-                <img src={logoImg} alt="this is shop.co logo" />
-                <p>We have clothes that suits your style and which you’re proud to wear. From women to men.</p>
+            <div className=' lg:flex flex-col items-start gap-4   lg:gap-8 lg:w-[250px] lg:h-[150px]' >
+                <img src={logoImg} className='flex my-4' alt="this is shop.co logo" />
+                <p className='text-sm '>We have clothes that suits your style
+                     and which you’re proud to wear. From women to men.</p>
                 <div className='flex gap-2'>
                     <AiFillTwitterCircle />
                     <FaFacebook />
@@ -27,38 +28,29 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div>
-                {
-                    FooterData.map((menus,index)=>{
-                       return(
-                        <div key={index}>
-                            {
-                                menus.map((menu,index)=>{
-                                    return(
-                                        <div key={index}>
-                                            <h2>{menu.title}</h2>;
-                                            <ul>
-                                                {
-                                                    (menu.links).map((list,index)=>{
-                                                        return(
-                                                            <li key={index}>
-                                                                <Link to={list.link}>
-                                                                    {list.title}
-                                                                </Link>
-                                                            </li>
-                                                        )
-                                                    })
-                                                }
-                                            </ul>
-                                        </div>
-
-                                    )                                    
-                                })
-                            }
+            <div className='flex flex-wrap lg:flex-row gap-16 lg:gap-32 items-center justify-between mx-4  mt-2'>
+               {
+                  FooterData.map((menus,index)=>{
+                    return(
+                        <div key={index} className='flex flex-col justify-between gap-4'>   
+                            <h2 className='font-semibold'>{menus.title}</h2>
+                            <ul className='flex flex-col gap-4 items-start'>
+                                {
+                                    menus.links.map((list,index)=>{
+                                        return(
+                                            <Link to={list.link}>
+                                                <li key={index}>
+                                                    {list.title}
+                                                </li>
+                                            </Link>
+                                        )
+                                    })
+                                }
+                            </ul>
                         </div>
-                       )
-                    })
-                }
+                    )
+                  })
+               }
             </div>
 
         </div>

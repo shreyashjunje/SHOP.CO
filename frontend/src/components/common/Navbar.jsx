@@ -55,7 +55,7 @@ const Navbar = () => {
           <ul className=" flex gap-5">
             {NavLinks.map((link, index) => {
               return (
-                <li key={index}>
+                <li key={index} className="text-xl">
                   {link.title === "Shop" ? (
                     <div className="flex justify-center items-center">
                       <p>Shop </p>

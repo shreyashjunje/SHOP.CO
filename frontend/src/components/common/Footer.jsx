@@ -36,10 +36,10 @@ const Footer = () => {
                             <h2 className='font-semibold'>{menus.title}</h2>
                             <ul className='flex flex-col gap-4 items-start'>
                                 {
-                                    menus.links.map((list,index)=>{
+                                    menus.links.map((list,subindex)=>{
                                         return(
-                                            <Link to={list.link}>
-                                                <li key={index}>
+                                            <Link key={subindex} to={list.link}>
+                                                <li key={subindex}>
                                                     {list.title}
                                                 </li>
                                             </Link>
@@ -57,7 +57,7 @@ const Footer = () => {
         {/* section 2--only line */}
         <div></div>
         {/* section 3-right by section */}
-        <div></div>
+        {/* <div></div> */}
     </div>
   )
 }

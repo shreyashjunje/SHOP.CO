@@ -1,3 +1,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "/app.css   "; /* Adjust the path as needed */
+
+
+/* styles.css or a global CSS file */
+@font-face {
+    font-family: "Anton SC";
+    src: url("/path/to/fonts/AntonSC-Regular.woff2") format("woff2"),
+         url("/path/to/fonts/AntonSC-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  @font-face {
+     font-family: "Inter";
+     src: url("/fonts/Inter-Regular.woff2") format("woff2"),
+          url("/fonts/Inter-Regular.woff") format("woff");
+     font-weight: 400;
+     font-style: normal;
+     font-optical-sizing: auto;
+     font-variation-settings: "slnt" 0;
+   }
+   
+   @font-face {
+     font-family: "Inter";
+     src: url("/fonts/Inter-Bold.woff2") format("woff2"),
+          url("/fonts/Inter-Bold.woff") format("woff");
+     font-weight: 700;
+     font-style: normal;
+     font-optical-sizing: auto;
+     font-variation-settings: "slnt" 0;
+   }
+
+   .inter-custom {
+     font-family: "Inter", sans-serif;
+     font-optical-sizing: auto;
+     font-weight: 400; /* Replace with the desired weight */
+     font-style: normal;
+     font-variation-settings: "slnt" 0;
+   }
+
+   /* src/global.css */
+.bebas-neue-regular {
+     font-family: "Bebas Neue", sans-serif;
+     font-weight: 400;
+     font-style: normal;
+   }
+   

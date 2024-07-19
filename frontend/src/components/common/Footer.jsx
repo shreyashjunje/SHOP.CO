@@ -55,7 +55,7 @@ const Footer = () => {
 
         </div>
         {/* section 2--only line */}
-        <div></div>
+        {/* <div></div> */}
         {/* section 3-right by section */}
         {/* <div></div> */}
     </div>

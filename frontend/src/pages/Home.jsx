@@ -9,6 +9,11 @@ import gucci from "../assets/Images/gucci.png";
 import prada from "../assets/Images/prada.png";
 import calvinklein from "../assets/Images/Calvin.png";
 import OffersBox from "../components/common/OffersBox";
+import Cart from "../components/common/Cart";
+import { ClothingCart } from "../data/ClothingCart";
+import { useState } from "react";
+import BrowseByDressStyle from "../components/core/home/BrowseByDressStyle";
+
 
 const countArr = [
   {
@@ -26,6 +31,18 @@ const countArr = [
 ];
 
 const Home = () => {
+  const [viewAll, setViewAll] = useState(false);
+  const [topSelling, setTopSelling] = useState(false);
+
+  const viewAllHandler = () => {
+    setViewAll((prev) => !prev);
+  };
+  const topSellingHandler = () => {
+    setTopSelling((prev) => !prev);
+  };
+
+  const carts = 0;
+  const topsellingcarts = 0;
   return (
     <div className=" relative w-full flex-col">
       <Navbar className="absolute" />
@@ -93,6 +110,89 @@ const Home = () => {
           <img src={calvinklein} alt="this is image of brand name" />
         </div>
       </div>
+
+      {/* New Arrivals */}
+      <div className="flex flex-col items-center justify-center gap-12 m-12 py-8">
+        <h2 className="font-bebas-neue text-6xl">NEW ARRIVALS</h2>
+
+        <div className="flex flex-col justify-evenly gap-12 h-full w-[90%] ">
+          <div className="flex flex-wrap">
+            {viewAll
+              ? ClothingCart.map((cart) => {
+                  return (
+                    <div className="flex justify-center items-center mx-auto gap-4 m-2">
+                      <Cart key={cart.id} cart={cart} />
+                    </div>
+                  );
+                })
+              : ClothingCart.slice(carts, carts + 4).map((cart) => {
+                  return (
+                    <div className="flex flex-wrap justify-center items-center mx-auto gap-4 m-2">
+                      <Cart key={cart.id} cart={cart} />
+                    </div>
+                  );
+                })}
+          </div>
+        </div>
+        <button
+          onClick={viewAllHandler}
+          className="px-16 py-4 border-2 rounded-full font-semibold"
+        >
+          {
+            viewAll ? "Show Less" : "View All"
+          }
+        </button>
+      </div>
+
+      {/* horizontal line */}
+      <div className="w-full border-2 opacity-1"></div>
+
+      {/* Top selling */}
+      <div className="flex flex-col items-center justify-center gap-12 m-12 py-16">
+        <h2 className="font-bebas-neue text-6xl">Top Selling</h2>
+
+        <div className="flex flex-col justify-evenly gap-12 h-full w-[90%] ">
+          <div className="flex flex-wrap">
+            {topSelling
+              ? ClothingCart.filter(
+                  (cart) => cart.price > 50 && cart.price < 90
+                ).map((cart) => {
+                  return (
+                    <div className="flex flex-wrap justify-center items-center mx-auto gap-4 m-2">
+                      <Cart key={cart.id} cart={cart} />
+                    </div>
+                  );
+                })
+              : ClothingCart.filter(
+                  (cart) => cart.price > 50 && cart.price < 90
+                )
+                  .slice(topsellingcarts, topsellingcarts + 4)
+                  .map((cart) => {
+                    return (
+                      <div className="flex flex-wrap justify-center items-center mx-auto gap-4 m-2">
+                        <Cart key={cart.id} cart={cart} />
+                      </div>
+                    );
+                  })}
+          </div>
+        </div>
+
+        <button
+          onClick={topSellingHandler}
+          className="px-16 py-4 border-2 rounded-full font-semibold"
+        >
+           {
+            topSelling ? "Show Less" : "View All"
+          }
+        </button>
+      </div>
+
+      <div className="flex items-center justify-center p-6 border-2 ">
+        <BrowseByDressStyle/>
+      </div>
+
+      
+
 
       <OffersBox />
     </div>

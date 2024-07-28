@@ -45,7 +45,6 @@ const Home = () => {
   const topsellingcarts = 0;
   return (
     <div className=" relative w-full flex-col">
-      <Navbar className="absolute" />
 
       <div className="flex flex-col lg:flex-row bg-[#F2F0F1] justify-between ">
         {/* first div  */}

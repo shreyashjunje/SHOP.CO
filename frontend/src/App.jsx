@@ -4,6 +4,7 @@ import Navbar from "./components/common/Navbar";
 import Footer from "./components/common/Footer";
 import Home from "./pages/Home";
 import Category from "./pages/Category";
+import Cart from "./pages/Cart"
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/Category" element={<Category />}/>
+        <Route path="/category" element={<Category />}/>
+        <Route path="/cart" element={<Cart />}/>
       </Routes>
 
       <Footer />

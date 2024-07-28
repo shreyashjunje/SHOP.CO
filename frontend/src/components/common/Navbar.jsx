@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink } from "react-router-dom";
 import NavLinks from "../../data/Navlinks";
 import { FiShoppingCart } from "react-icons/fi";
 import { FaRegUserCircle } from "react-icons/fa";
@@ -8,11 +8,13 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { IoIosSearch } from "react-icons/io"
 import logo from "../../assets/Images/SHOPCOlogo.png"
 import { VscThreeBars } from "react-icons/vsc";
+import { useNavigate } from "react-router-dom";
 
 
 
 
 const Navbar = () => {
+  const navigate=useNavigate();
   const location = useLocation();
 
   const[searchbar,setSearchbar]=useState("")
@@ -98,7 +100,9 @@ const Navbar = () => {
             {/* for small screen search icon will appear */}
             <IoIosSearch className="lg:hidden flex items-center w-6 h-6"/>
 
-            <FiShoppingCart className="w-6 h-6"/>
+            <FiShoppingCart onClick={()=>{
+              navigate("/cart")
+            }} className="w-6 h-6"/>
             <FaRegUserCircle className="w-6 h-6"/>
         </div>
 

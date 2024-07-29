@@ -25,13 +25,14 @@ const Card = ({ cart }) => {
   };
 
   return (
-    <div className="flex object-cover w-[80%] lg:w-[667px] lg:h-[124px] m-2 gap-4 ">
+    <div className="flex object-cover mx-auto justify-center md:justify-between  w-[90%] lg:w-[667px] lg:h-[124px] m-2 gap-4 ">
 
       <div className=" bg-gray-300  overflow-hidden">
         <img src={cart.image} alt={`this is an image of ${cart.title}`} className="w-[124px] h-[124px]" />
       </div>
 
-      <div className="flex justify-between lg:w-[80%] ">
+      <div className="flex justify-between lg:justify-between w-full lg:w-[80%] ">
+
         <div className="">
           <h2 className="text-xl font-bold">{cart.title}</h2>
           <p >{`Size : ${cart.size}`}</p>
@@ -39,7 +40,7 @@ const Card = ({ cart }) => {
           <p className="text-xl font-bold mt-3">{`$${cart.price}`}</p>
         </div>
 
-        <div className="flex flex-col justify-between items-end m-1">
+        <div className="flex flex-col  justify-between items-end lg:m-1">
           <MdDelete className="text-red-500 text-2xl"/>
           <div className="rounded-full bg-[#F0F0F0] flex items-center justify-center gap-5 py-[0.2rem] px-[0.6rem]">
             <button onClick={() => decreaseHandler(cart.id)}>-</button>

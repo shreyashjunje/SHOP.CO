@@ -37,7 +37,7 @@ const Cart = () => {
                     }
                 </div>
 
-                <div className='w-[450px] h-[420px] border-2 flex flex-col gap-6 my-4 rounded-2xl  py-[0.8rem] px-[1rem]' >
+                <div className='w-full lg:w-[450px] h-[420px] border-2 mx-auto flex flex-col gap-6 my-4 rounded-2xl  py-[0.8rem] px-[1rem]' >
                     <h2 className='text-lg font-bold'>Order Summary</h2>
 
                     <div className='flex flex-col gap-2'>

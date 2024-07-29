@@ -63,19 +63,7 @@ const Sidebar = () => {
     setAdjustment((prev) => !prev);
   }
 
-  function priceAdjustmentHandler() {
-    setPriceAdjustment((prev) => !prev);
-  }
-  // function colorsAdjustmentHandler() {
-  //   setColorsAdjustment((prev) => !prev);
-  // }
-  function sizeAdjustmentHandler() {
-    setSizeAdjustment((prev) => !prev);
-  }
-  function dressStylesAdjustmentHandler() {
-    setDressStylesAdjustment((prev) => !prev);
-  }
-
+  
   const [value, setValue] = React.useState([20, 37]);
 
   const handleChange = (event, newValue) => {
@@ -124,17 +112,10 @@ const Sidebar = () => {
           <div>
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold">Price</h2>
-              {priceAdjustment ? (
-                <FaAngleUp
-                  className="text-xl"
-                  onClick={priceAdjustmentHandler}
-                />
-              ) : (
-                <FaAngleDown
-                  className="text-xl"
-                  onClick={priceAdjustmentHandler}
-                />
-              )}
+              <FaAngleUp
+                className={cn("text-xl", priceAdjustment && "rotate-180")}
+                onClick={() => Handle(setPriceAdjustment, priceAdjustment)}
+              />
             </div>
             {priceAdjustment ? (
               <div className="felx items-center justify-center my-6">
@@ -192,17 +173,10 @@ const Sidebar = () => {
           <div>
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold">Size</h2>
-              {sizeAdjustment ? (
-                <FaAngleUp
-                  className="text-xl"
-                  onClick={sizeAdjustmentHandler}
-                />
-              ) : (
-                <FaAngleDown
-                  className="text-xl"
-                  onClick={sizeAdjustmentHandler}
-                />
-              )}
+              <FaAngleUp
+                className={cn("text-xl", sizeAdjustment && "rotate-180")}
+                onClick={() => Handle(setSizeAdjustment, sizeAdjustment)}
+              />
             </div>
             {sizeAdjustment ? (
               <div className="">
@@ -230,17 +204,10 @@ const Sidebar = () => {
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-bold">Dress Styles</h2>
-              {dressStylesAdjustment ? (
-                <FaAngleUp
-                  className="text-xl"
-                  onClick={dressStylesAdjustmentHandler}
-                />
-              ) : (
-                <FaAngleDown
-                  className="text-xl"
-                  onClick={dressStylesAdjustmentHandler}
-                />
-              )}
+              <FaAngleUp
+                className={cn("text-xl", dressStylesAdjustment && "rotate-180")}
+                onClick={() => Handle(setDressStylesAdjustment, dressStylesAdjustment)}
+              />
             </div>
 
             {dressStylesAdjustment ? (

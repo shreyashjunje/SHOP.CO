@@ -25,7 +25,7 @@ const ProductDetails = () => {
         </span>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-8">
+      <div className="flex flex-col md:flex-row lg:flex-row gap-8">
         {/* {image section } */}
         <div className="flex flex-col lg:flex-row gap-6 ">
 

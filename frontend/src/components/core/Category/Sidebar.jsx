@@ -5,12 +5,13 @@ import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
 import { HiOutlineAdjustmentsVertical } from "react-icons/hi2";
 
-import Box from '@mui/material/Box';
-import Slider from '@mui/material/Slider';
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
+import cn from "../../utils";
 
 function valuetext(value) {
-    return `${value}`;
-  }
+  return `${value}`;
+}
 
 const clothCategory = [
   { title: "T-Shirts" },
@@ -33,28 +34,30 @@ const ClothColors = [
   { color: "#000000" },
 ];
 
-const ClothSizes=[
-    {size:"Small"},
-    {size:"Medium"},
-    {size:"Large"},
-    {size:"X-Large"},
-]
+const ClothSizes = [
+  { size: "Small" },
+  { size: "Medium" },
+  { size: "Large" },
+  { size: "X-Large" },
+];
 
-const DressStyles=[
-    {title:"Casuals"},
-    {title:"Formals"},
-    {title:"Party"},
-    {title:"Gym"},
-]
+const DressStyles = [
+  { title: "Casuals" },
+  { title: "Formals" },
+  { title: "Party" },
+  { title: "Gym" },
+];
 
 const Sidebar = () => {
   const [adjustment, setAdjustment] = useState(true);
   const [priceAdjustment, setPriceAdjustment] = useState(true);
   const [colorsAdjustment, setColorsAdjustment] = useState(true);
-  const [sizeAdjustment,setSizeAdjustment]=useState(true);
-  const [dressStylesAdjustment,setDressStylesAdjustment]=useState(true);
+  const [sizeAdjustment, setSizeAdjustment] = useState(true);
+  const [dressStylesAdjustment, setDressStylesAdjustment] = useState(true);
 
-
+  function Handle(setHandler, prev) {
+    setHandler(!prev);
+  }
 
   function adjustmentHandler() {
     setAdjustment((prev) => !prev);
@@ -63,9 +66,9 @@ const Sidebar = () => {
   function priceAdjustmentHandler() {
     setPriceAdjustment((prev) => !prev);
   }
-  function colorsAdjustmentHandler() {
-    setColorsAdjustment((prev) => !prev);
-  }
+  // function colorsAdjustmentHandler() {
+  //   setColorsAdjustment((prev) => !prev);
+  // }
   function sizeAdjustmentHandler() {
     setSizeAdjustment((prev) => !prev);
   }
@@ -73,14 +76,11 @@ const Sidebar = () => {
     setDressStylesAdjustment((prev) => !prev);
   }
 
- 
-
   const [value, setValue] = React.useState([20, 37]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
 
   return (
     <div className="border-2  rounded-[30px] p-[1.5rem]  max-w-[300px]">
@@ -136,59 +136,51 @@ const Sidebar = () => {
                 />
               )}
             </div>
-            {priceAdjustment ? <div className="felx items-center justify-center my-6">
+            {priceAdjustment ? (
+              <div className="felx items-center justify-center my-6">
                 <Box sx={{ width: 250 }}>
-                    <Slider
-                        getAriaLabel={() => 'Prize range'}
-                        value={value}
-                        onChange={handleChange}
-                        valueLabelDisplay="auto"
-                        getAriaValueText={valuetext}
-                        className="text-black"
-
-                    />
+                  <Slider
+                    getAriaLabel={() => "Prize range"}
+                    value={value}
+                    onChange={handleChange}
+                    valueLabelDisplay="auto"
+                    getAriaValueText={valuetext}
+                    className="text-black"
+                  />
                 </Box>
-                
-            </div> : ""}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
 
           <hr className="my-[1rem]" />
 
-        {/* ...colors adjustment.... */}
+          {/* ...colors adjustment.... */}
           <div>
-
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold">Colors</h2>
-              {colorsAdjustment ? (
-                <FaAngleUp
-                  className="text-xl"
-                  onClick={colorsAdjustmentHandler}
-                />
-              ) : (
-                <FaAngleDown
-                  className="text-xl"
-                  onClick={colorsAdjustmentHandler}
-                />
-              )}
+
+              <FaAngleUp
+                className={cn("text-xl", colorsAdjustment && "rotate-180")}
+                onClick={() => Handle(setColorsAdjustment, colorsAdjustment)}
+              />
             </div>
 
             {colorsAdjustment ? (
-              
-            <div className="flex items-center justify-center mt-2">
-                  <div className="flex flex-wrap gap-3 m-3  items-center  ">
+              <div className="flex items-center justify-center mt-2">
+                <div className="flex flex-wrap gap-3 m-3  items-center  ">
                   {ClothColors.map((colors, index) => {
                     return (
                       <div
-                      key={index}
+                        key={index}
                         className="rounded-full w-[35px] h-[35px]   border-2"
                         style={{ backgroundColor: colors.color }}
                       ></div>
                     );
                   })}
                 </div>
-            </div>
-               
-        
+              </div>
             ) : (
               " "
             )}
@@ -196,75 +188,79 @@ const Sidebar = () => {
 
           <hr className="my-[1rem]" />
 
-        {/* size adjustments */}
+          {/* size adjustments */}
           <div>
             <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold">Size</h2>
-                {sizeAdjustment ? (
-                    <FaAngleUp
-                    className="text-xl"
-                    onClick={sizeAdjustmentHandler}
-                    />
-                ) : (
-                    <FaAngleDown
-                    className="text-xl"
-                    onClick={sizeAdjustmentHandler}
-                    />
-                )}
+              <h2 className="text-2xl font-bold">Size</h2>
+              {sizeAdjustment ? (
+                <FaAngleUp
+                  className="text-xl"
+                  onClick={sizeAdjustmentHandler}
+                />
+              ) : (
+                <FaAngleDown
+                  className="text-xl"
+                  onClick={sizeAdjustmentHandler}
+                />
+              )}
+            </div>
+            {sizeAdjustment ? (
+              <div className="">
+                <div className="flex flex-wrap gap-2 items-center justify-center mt-4">
+                  {ClothSizes.map((sizes, index) => {
+                    return (
+                      <button
+                        key={index}
+                        className="text-lg rounded-full py-[0.6rem] px-[1.9rem] bg-gray-200 border"
+                      >
+                        {sizes.size}
+                      </button>
+                    );
+                  })}
                 </div>
-                {sizeAdjustment ? <div className="">
-                    <div className="flex flex-wrap gap-2 items-center justify-center mt-4">
-                        {
-                            ClothSizes.map((sizes,index)=>{
-                                return (
-                                    <button key={index} className="text-lg rounded-full py-[0.6rem] px-[1.9rem] bg-gray-200 border">
-                                        {sizes.size}
-                                    </button>
-                                )
-                            })
-                        }
-                    </div>
-                </div> : ""}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
 
           <hr className="my-[1rem]" />
 
-        {/* dress styles */}
-        <div>
+          {/* dress styles */}
+          <div>
             <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold">Dress Styles</h2>
-                {dressStylesAdjustment ? (
-                    <FaAngleUp
-                    className="text-xl"
-                    onClick={dressStylesAdjustmentHandler}
-                    />
-                ) : (
-                    <FaAngleDown
-                    className="text-xl"
-                    onClick={dressStylesAdjustmentHandler}
-                    />
-                )}
+              <h2 className="text-2xl font-bold">Dress Styles</h2>
+              {dressStylesAdjustment ? (
+                <FaAngleUp
+                  className="text-xl"
+                  onClick={dressStylesAdjustmentHandler}
+                />
+              ) : (
+                <FaAngleDown
+                  className="text-xl"
+                  onClick={dressStylesAdjustmentHandler}
+                />
+              )}
             </div>
 
-                {dressStylesAdjustment ? 
-                <div className="">
-                            {DressStyles.map((dressStyle, index) => {
-                                return (
-                                    <div
-                                    key={index}
-                                    className="flex items-center justify-between py-[0.3rem]"
-                                    >
-                                    <h2 className="text-lg ">{dressStyle.title}</h2>
-                                    <MdOutlineNavigateNext className="mt-1 text-lg" />
-                </div>
-              );
-            })}
-                </div> : ""}
-        </div>
-         
-
-
-
+            {dressStylesAdjustment ? (
+              <div className="">
+                {DressStyles.map((dressStyle, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="flex items-center justify-between py-[0.3rem]"
+                    >
+                      <h2 className="text-lg ">{dressStyle.title}</h2>
+                      <MdOutlineNavigateNext className="mt-1 text-lg" />
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       )}
     </div>

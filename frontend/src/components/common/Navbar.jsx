@@ -61,7 +61,7 @@ const Navbar = () => {
                   {link.title === "Shop" ? (
                     <div className="flex justify-center items-center">
                       <p>Shop </p>
-                      <MdOutlineKeyboardArrowDown />
+                      <MdOutlineKeyboardArrowDown onClick={()=>navigate("/productdetails")}/>
                     </div>
                   ) : (
                     <Link to={link?.path}>

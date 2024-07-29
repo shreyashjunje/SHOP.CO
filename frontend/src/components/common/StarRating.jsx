@@ -10,7 +10,8 @@ const StarRating = ({ rating }) => {
   const emptyStars = 5 - fullStars - halfStars;
 
   return (
-    <div>
+    <div className='flex items-center gap-2'>
+      <div className='flex gap-1'>
       {Array(fullStars)
         .fill()
         .map((_, index) => (
@@ -26,6 +27,9 @@ const StarRating = ({ rating }) => {
         .map((_, index) => (
           <FaRegStar key={`empty-${index}`} color="gold" />
         ))}
+      </div>
+     
+        {`${rating}/5`}
     </div>
   );
 };

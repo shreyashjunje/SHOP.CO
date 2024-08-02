@@ -24,11 +24,14 @@ const ProductSchema = new mongoose.Schema({
     maxLength: 500,
   },
   colors: [{ type: String }],
-  sizes: [{ type: String }],
+  sizes: {
+    type: [String],
+    // default:["Medium","L","XL"],
+  },
   quantity: {
     type: Number,
     min: 1,
-    required: true,
+    // required: true,
   },
   reviews: [
     {
@@ -36,7 +39,10 @@ const ProductSchema = new mongoose.Schema({
       ref: "RatingAndReviews",
     },
   ],
-  images: [{ type: String }],
+  images: { type: [String] },
+  // image:{
+  //   type:String,
+  // },
   category: {
     type: String,
     required: true,
@@ -44,7 +50,7 @@ const ProductSchema = new mongoose.Schema({
   dressStyle: {
     type: String,
   },
-  gender: [{ type: String }],
+  genders: { type: [String] },
   dateAdded: {
     type: Date,
     default: Date.now,
